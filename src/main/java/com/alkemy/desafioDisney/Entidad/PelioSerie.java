@@ -33,6 +33,7 @@ public class PelioSerie implements Serializable {
                 inverseJoinColumns = @JoinColumn(name = "personaje_id"))
     private List<Personaje> personajes = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "pelioSeries", cascade = CascadeType.ALL)
-    private List<Genero> generos = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "genero_id", insertable = false, updatable = false)
+    private Genero genero;
 }

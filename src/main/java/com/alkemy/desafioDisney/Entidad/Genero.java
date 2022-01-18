@@ -21,9 +21,6 @@ public class Genero implements Serializable {
     private String nombre;
     private String imagen;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "peli_genero",
-                joinColumns = @JoinColumn(name = "genero_id"),
-                inverseJoinColumns = @JoinColumn(name = "pelioSerie_id"))
+   @OneToMany
     private List<PelioSerie> pelioSeries = new ArrayList<>();
 }
