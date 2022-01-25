@@ -2,6 +2,8 @@ package com.alkemy.desafioDisney.Entidad;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +13,8 @@ import java.util.List;
 @Entity
 @Table(name = "genero")
 @Data
+@SQLDelete(sql = "UPDATE genero SET delet = true WHERE id = ?")
+@Where(clause = "delete = false")
 public class Genero implements Serializable {
 
     @Id
@@ -21,6 +25,8 @@ public class Genero implements Serializable {
     private String nombre;
     private String imagen;
 
-   @OneToMany
+   @OneToMany(mappedBy = "genero")
     private List<PelioSerie> pelioSeries = new ArrayList<>();
+
+   private Boolean borrado = Boolean.FALSE;
 }
