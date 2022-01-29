@@ -22,6 +22,6 @@ public interface PersonajeServicio {
 
     PersonajeDTO obtenerPersonaje (String id) throws ParseException, ParamNotFound;
 
-    List<PersonajeBaseDTO> buscarConFlitro(String nombre, Integer edad, List<String> peliculas);
+    List<PersonajeBaseDTO> buscarConFlitro(String nombre, String edad, List<String> peliculas);
 
 }

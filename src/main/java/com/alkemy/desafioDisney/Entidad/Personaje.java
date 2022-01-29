@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,8 +12,8 @@ import java.util.List;
 @Entity
 @Table(name = "personaje")
 @Data
-@SQLDelete(sql = "UPDATE personaje SET delet = true WHERE id = ?")
-@Where(clause = "delete = false")
+@SQLDelete(sql = "UPDATE personaje SET borrado = true WHERE id = ?")
+@Where(clause = "borrado = false")
 public class Personaje implements Serializable {
 
     @Id

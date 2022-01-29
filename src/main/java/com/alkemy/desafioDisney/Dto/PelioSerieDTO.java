@@ -1,7 +1,6 @@
 package com.alkemy.desafioDisney.Dto;
 
 import lombok.Data;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,5 +12,5 @@ public class PelioSerieDTO implements Serializable {
     String fechaCreacion;
     Integer calificacion;
     List<PersonajeDTO> personajes;
-    String generoId;
+    GeneroDTO generoDTO;
 }

@@ -13,8 +13,8 @@ import java.util.List;
 @Entity
 @Table(name = "genero")
 @Data
-@SQLDelete(sql = "UPDATE genero SET delet = true WHERE id = ?")
-@Where(clause = "delete = false")
+@SQLDelete(sql = "UPDATE genero SET borrado = true WHERE id = ?")
+@Where(clause = "borrado = false")
 public class Genero implements Serializable {
 
     @Id

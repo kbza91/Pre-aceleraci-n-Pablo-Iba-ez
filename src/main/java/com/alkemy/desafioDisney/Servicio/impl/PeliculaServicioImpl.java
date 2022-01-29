@@ -1,12 +1,10 @@
 package com.alkemy.desafioDisney.Servicio.impl;
 
-import com.alkemy.desafioDisney.Dto.PeliculaFiltroDTO;
-import com.alkemy.desafioDisney.Dto.PelioSerieBaseDTO;
-import com.alkemy.desafioDisney.Dto.PelioSerieDTO;
-import com.alkemy.desafioDisney.Dto.PersonajeDTO;
+import com.alkemy.desafioDisney.Dto.*;
 import com.alkemy.desafioDisney.Entidad.PelioSerie;
 import com.alkemy.desafioDisney.Entidad.Personaje;
 import com.alkemy.desafioDisney.Exception.ParamNotFound;
+import com.alkemy.desafioDisney.Mapper.GeneroMapper;
 import com.alkemy.desafioDisney.Mapper.PeliculaMapper;
 import com.alkemy.desafioDisney.Mapper.PersonajeMapper;
 import com.alkemy.desafioDisney.Repositorio.PeliculaRepositorio;
@@ -14,7 +12,6 @@ import com.alkemy.desafioDisney.Repositorio.Specification.PeliculaSpecification;
 import com.alkemy.desafioDisney.Servicio.PeliculaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +30,10 @@ public class PeliculaServicioImpl implements PeliculaServicio {
     private PeliculaMapper peliculaMapper;
     @Autowired
     private PersonajeMapper personajeMapper;
+    @Autowired
+    private GeneroMapper generoMapper;
+    @Autowired
+    private GeneroServicioImpl generoServicio;
 
     public List<PelioSerieBaseDTO> buscarPorFiltro(String nombre, String idGenero, String order, String fechaCreacion) {
         PeliculaFiltroDTO filtroDTO = new PeliculaFiltroDTO(nombre, idGenero, order, fechaCreacion);
@@ -42,6 +43,8 @@ public class PeliculaServicioImpl implements PeliculaServicio {
 
     public PelioSerieDTO guardarPelicula(PelioSerieDTO dto) throws ParseException {
         PelioSerie entidad = peliculaMapper.peliDTO2Entidad(dto, true);
+        GeneroDTO generoDTO = generoServicio.guardarGenero(dto.getGeneroDTO());
+        entidad.setGenero(generoMapper.generoDTO2Entidad(generoDTO));
         PelioSerie entidadGuardada = peliculaRepositorio.save(entidad);
         return peliculaMapper.peliEntidad2DTO(entidadGuardada, true);
     }
@@ -56,7 +59,7 @@ public class PeliculaServicioImpl implements PeliculaServicio {
         busqueda.setTitulo(dtoNuevo.getTitulo());
         busqueda.setCalificacion(dtoNuevo.getCalificacion());
         busqueda.setImagen(dtoNuevo.getImagen());
-        busqueda.setGeneroId(dtoNuevo.getGeneroId());
+        busqueda.setGeneroId(dtoNuevo.getGeneroDTO().getId());
 
         SimpleDateFormat fechaFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date fetch = fechaFormat.parse(dtoNuevo.getFechaCreacion());
@@ -80,6 +83,11 @@ public class PeliculaServicioImpl implements PeliculaServicio {
             throw new ParamNotFound("Pelicula con id: " + id + " no fue encontrado");
         }
         return result.get();
+    }
+
+    public PelioSerieDTO obtenerDetallePeli(String id) throws ParamNotFound, ParseException {
+        PelioSerie busqueda = this.buscarPorId(id);
+        return peliculaMapper.peliEntidad2DTO(busqueda, true);
     }
 
 

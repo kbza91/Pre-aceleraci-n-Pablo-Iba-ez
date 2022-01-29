@@ -19,6 +19,8 @@ public class PeliculaMapper {
 
     @Autowired
     private PersonajeMapper personajeMapper;
+    @Autowired
+    private GeneroMapper generoMapper;
 
     public PelioSerie peliDTO2Entidad (PelioSerieDTO dto, boolean cargarPersonajes) throws ParseException {
 
@@ -26,7 +28,6 @@ public class PeliculaMapper {
         pelioSerie.setTitulo(dto.getTitulo());
         pelioSerie.setCalificacion(dto.getCalificacion());
         pelioSerie.setImagen(dto.getImagen());
-        pelioSerie.setGeneroId(dto.getGeneroId());
 
         SimpleDateFormat fechaFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date fetch = fechaFormat.parse(dto.getFechaCreacion());
@@ -49,7 +50,7 @@ public class PeliculaMapper {
         dto.setTitulo(entidad.getTitulo());
         dto.setCalificacion(entidad.getCalificacion());
         dto.setImagen(entidad.getImagen());
-        dto.setGeneroId(entidad.getGeneroId());
+        //dto.setGeneroDTO(generoMapper.generoEntidad2DTO(entidad.getGenero()));
 
         SimpleDateFormat fechaFormat = new SimpleDateFormat("dd/MM/yyyy");
         String fetch = fechaFormat.format(entidad.getFechaCreacion());

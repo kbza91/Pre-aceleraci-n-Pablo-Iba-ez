@@ -27,15 +27,14 @@ public class PersonajeSpecification {
                                 "%" + filtroDTO.getNombre().toLowerCase() + "%")
                 );
             }
-            if (StringUtils.hasLength(String.valueOf(filtroDTO.getEdad()))){
+            if (StringUtils.hasLength(filtroDTO.getEdad())){
+                Integer edad = Integer.parseInt(filtroDTO.getEdad());
                 predicates.add(
-                        criteriaBuilder.like(
-                                criteriaBuilder.lower(root.get("edad")),
-                                "%" + filtroDTO.getEdad() + "%")
+                        criteriaBuilder.equal(root.get("edad"), edad)
                 );
             }
             if (!CollectionUtils.isEmpty(filtroDTO.getPeliculas())){
-                Join<PelioSerie, Personaje> toBeJoin = root.join("peliculas", JoinType.INNER);
+                Join<PelioSerie, Personaje> toBeJoin = root.join("movies", JoinType.INNER);
                 Expression<String> peliculaId = toBeJoin.get("id");
 
                 predicates.add((peliculaId.in(filtroDTO.getPeliculas())));

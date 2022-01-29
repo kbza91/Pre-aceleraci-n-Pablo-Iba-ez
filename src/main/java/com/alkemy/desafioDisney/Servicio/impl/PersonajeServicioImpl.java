@@ -72,11 +72,10 @@ public class PersonajeServicioImpl implements PersonajeServicio {
         return personajeMapper.personajeEntidad2DTO(personaje, true);
     }
 
-    public List<PersonajeBaseDTO> buscarConFlitro(String nombre, Integer edad, List<String> peliculas) {
+    public List<PersonajeBaseDTO> buscarConFlitro(String nombre, String edad, List<String> peliculas) {
         PersonajeFiltroDTO filtroDTO = new PersonajeFiltroDTO(nombre, edad, peliculas);
         List<Personaje> entidades = personajeRepositorio.findAll(personajeSpecification.buscarPorFiltros(filtroDTO));
         return personajeMapper.listaPersonajeEntidad2DTObase(entidades);
     }
-
 
 }

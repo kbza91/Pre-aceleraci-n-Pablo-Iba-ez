@@ -46,7 +46,7 @@ public class PersonajeControlador {
     @GetMapping
     public ResponseEntity<List<PersonajeBaseDTO>> personajesConFiltro(
             @RequestParam(required = false) String nombre,
-            @RequestParam(required = false) Integer edad,
+            @RequestParam(required = false) String edad,
             @RequestParam(required = false) List<String> peliculas
     ) {
         List<PersonajeBaseDTO> listaFinal = personajeServicio.buscarConFlitro(nombre, edad, peliculas);

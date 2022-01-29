@@ -19,4 +19,6 @@ public interface PeliculaServicio {
     PelioSerieDTO modificarPelicula(String id, PelioSerieDTO dtoNuevo, boolean b) throws ParseException, ParamNotFound;
 
     PelioSerie buscarPorId (String id) throws ParamNotFound;
+
+    PelioSerieDTO obtenerDetallePeli (String id) throws ParamNotFound, ParseException;
 }

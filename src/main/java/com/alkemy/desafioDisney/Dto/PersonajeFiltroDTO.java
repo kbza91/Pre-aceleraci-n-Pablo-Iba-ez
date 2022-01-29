@@ -14,7 +14,7 @@ import java.util.List;
 public class PersonajeFiltroDTO {
 
     private String nombre;
-    private Integer edad;
+    private String edad;
     private List<String> peliculas;
 
 }

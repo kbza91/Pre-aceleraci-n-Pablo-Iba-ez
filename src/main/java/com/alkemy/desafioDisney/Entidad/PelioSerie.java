@@ -14,8 +14,8 @@ import java.util.List;
 @Entity
 @Table(name = "pelicula_o_serie")
 @Data
-@SQLDelete(sql = "UPDATE pelicula_o_serie SET delet = true WHERE id = ?")
-@Where(clause = "delete = false")
+@SQLDelete(sql = "UPDATE pelicula_o_serie SET borrado = true WHERE id = ?")
+@Where(clause = "borrado = false")
 public class PelioSerie implements Serializable {
 
     @Id

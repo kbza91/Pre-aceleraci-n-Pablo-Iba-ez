@@ -47,4 +47,10 @@ public class PeliculaControlador {
         PelioSerieDTO peliculaEditada = peliculaServicio.modificarPelicula(id, dtoNuevo, true);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(peliculaEditada);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PelioSerieDTO> mostrarPeliDetalle(@PathVariable String id) throws ParseException, ParamNotFound {
+        PelioSerieDTO busqueda = peliculaServicio.obtenerDetallePeli(id);
+        return ResponseEntity.status(HttpStatus.OK).body(busqueda);
+    }
 }
