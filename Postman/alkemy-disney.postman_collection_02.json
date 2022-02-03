@@ -1,0 +1,538 @@
+{
+	"info": {
+		"_postman_id": "22f86d40-4d03-4be4-84cb-12d19942e40c",
+		"name": "alkemy-disney",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Personaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\" : \"src/imagen2.jpg\",\r\n    \"nombre\" : \"Black Widow\",\r\n    \"edad\" : \"34\",\r\n    \"peso\" : \"65.2\",\r\n    \"historia\" : \"Ex espia Rusa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear genero",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4NDM0MSwiaWF0IjoxNjQzODQ4MzQxfQ.n1l5abW6lTlStqD22ob2PLp332o1eXCTwWaogDV0ubY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\" : \"src/imagen2.jpg\",\r\n    \"nombre\" : \"Animación\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/generos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"generos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear genero2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4NDM0MSwiaWF0IjoxNjQzODQ4MzQxfQ.n1l5abW6lTlStqD22ob2PLp332o1eXCTwWaogDV0ubY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\" : \"src/imagen4.jpg\",\r\n    \"nombre\" : \"Fantasia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/generos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"generos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"pablomat91@gmail.com\",\r\n    \"password\" : \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignIn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"pablomat91@gmail.com\",\r\n    \"password\" : \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Pelicula",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4NDM0MSwiaWF0IjoxNjQzODQ4MzQxfQ.n1l5abW6lTlStqD22ob2PLp332o1eXCTwWaogDV0ubY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\" : \"src/imagen2.jpg\",\r\n    \"titulo\" : \"Avengers\",\r\n    \"fechaCreacion\" : \"11/04/2012\",\r\n    \"calificacion\" : \"5\",\r\n    \"generoId\" : \"0afc7c81-72f4-49b3-a6d0-af768f3e9533\",\r\n    \"personajes\" : [\r\n        {\r\n            \"imagen\" : \"src/imagen3.jpg\",\r\n            \"nombre\" : \"Thor Odison\",\r\n            \"edad\" : \"1000\",\r\n            \"peso\" : \"90.2\",\r\n            \"historia\" : \"Futuro Rey de Asgard\"\r\n        },\r\n        {\r\n            \"imagen\" : \"src/imagen4.jpg\",\r\n            \"nombre\" : \"Tony Stark\",\r\n            \"edad\" : \"40\",\r\n            \"peso\" : \"92.2\",\r\n            \"historia\" : \"Creador de la Armadura IronMan\"\r\n        },\r\n        {\r\n            \"imagen\" : \"src/imagen4.jpg\",\r\n            \"nombre\" : \"Steven Rogers\",\r\n            \"edad\" : \"100\",\r\n            \"peso\" : \"93.4\",\r\n            \"historia\" : \"Titulo actual, Capitan America\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar Pelicula",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4MzM3NCwiaWF0IjoxNjQzODQ3Mzc0fQ.MYYcj77-1WwBAzanSMytiDbXdNo4OhIa6C6SMdhwfsk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\" : \"src/imagen4.jpg\",\r\n    \"titulo\" : \"The Avengers\",\r\n    \"fechaCreacion\" : \"11/04/2013\",\r\n    \"calificacion\" : \"5\",\r\n    \"generoId\" : \"0afc7c81-72f4-49b3-a6d0-af768f3e9533\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies/ebeec1c3-3cf5-472b-a47f-e70971cbfa24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"ebeec1c3-3cf5-472b-a47f-e70971cbfa24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar Personaje",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4MzM3NCwiaWF0IjoxNjQzODQ3Mzc0fQ.MYYcj77-1WwBAzanSMytiDbXdNo4OhIa6C6SMdhwfsk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\" : \"src/imagen3.jpg\",\r\n    \"nombre\" : \"Thor Odison\",\r\n    \"edad\" : \"1050\",\r\n    \"peso\" : \"100.2\",\r\n    \"historia\" : \"Futuro Rey de Asgard\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/characters/2ead1974-36ed-478a-9941-d5b9c73f2409",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"2ead1974-36ed-478a-9941-d5b9c73f2409"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Pelicula2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4NDM0MSwiaWF0IjoxNjQzODQ4MzQxfQ.n1l5abW6lTlStqD22ob2PLp332o1eXCTwWaogDV0ubY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\" : \"src/imagen6.jpg\",\r\n    \"titulo\" : \"Luca\",\r\n    \"fechaCreacion\" : \"18/06/2021\",\r\n    \"calificacion\" : \"4\",\r\n    \"generoId\" : \"8b81c0c1-7477-4541-9f4d-2adcf0abf04e\",\r\n    \"personajes\" : [\r\n        {\r\n            \"imagen\" : \"src/imagen10.jpg\",\r\n            \"nombre\" : \"Luca Paguro\",\r\n            \"edad\" : \"13\",\r\n            \"peso\" : \"42.1\",\r\n            \"historia\" : \"monstruo marino que siente curiosidad por el mundo sobre el mar\"\r\n        },\r\n        {\r\n            \"imagen\" : \"src/imagen7.jpg\",\r\n            \"nombre\" : \"Alberto Scorfano\",\r\n            \"edad\" : \"16\",\r\n            \"peso\" : \"62.8\",\r\n            \"historia\" : \"monstruo marino adolescente y el mejor amigo de Luca\"\r\n        },\r\n        {\r\n            \"imagen\" : \"src/imagen11.jpg\",\r\n            \"nombre\" : \"Giulia Marcovaldo\",\r\n            \"edad\" : \"15\",\r\n            \"peso\" : \"52.8\",\r\n            \"historia\" : \"chica italiana que se hace amiga de Luca y Alberto\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista de Personajes filtrados",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4MzM3NCwiaWF0IjoxNjQzODQ3Mzc0fQ.MYYcj77-1WwBAzanSMytiDbXdNo4OhIa6C6SMdhwfsk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Thor Odison",
+							"disabled": true
+						},
+						{
+							"key": "edad",
+							"value": "40",
+							"disabled": true
+						},
+						{
+							"key": "movies",
+							"value": "ebeec1c3-3cf5-472b-a47f-e70971cbfa24",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista de Personajes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4MzM3NCwiaWF0IjoxNjQzODQ3Mzc0fQ.MYYcj77-1WwBAzanSMytiDbXdNo4OhIa6C6SMdhwfsk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/characters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detalle Personaje",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0MzQ1MTkzMSwiaWF0IjoxNjQzNDE1OTMxfQ.ZHEf-IBjoerwDrtsZ9Wi5yjo8feSFJIX4DNOoVLdr9Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/characters/a5bf93ab-9457-409e-8626-a4e2963f6987",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"a5bf93ab-9457-409e-8626-a4e2963f6987"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista de Peliculas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4MzM3NCwiaWF0IjoxNjQzODQ3Mzc0fQ.MYYcj77-1WwBAzanSMytiDbXdNo4OhIa6C6SMdhwfsk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista de Peliculas Filtrados",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4MzM3NCwiaWF0IjoxNjQzODQ3Mzc0fQ.MYYcj77-1WwBAzanSMytiDbXdNo4OhIa6C6SMdhwfsk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "titulo",
+							"value": "Avengers",
+							"disabled": true
+						},
+						{
+							"key": "generoId",
+							"value": "8b81c0c1-7477-4541-9f4d-2adcf0abf04e",
+							"disabled": true
+						},
+						{
+							"key": "orden",
+							"value": "DESC",
+							"disabled": true
+						},
+						{
+							"key": "fecha_creacion",
+							"value": "2012-04-11",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detalle Pelicula",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0MzQ1MTkzMSwiaWF0IjoxNjQzNDE1OTMxfQ.ZHEf-IBjoerwDrtsZ9Wi5yjo8feSFJIX4DNOoVLdr9Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/ebeec1c3-3cf5-472b-a47f-e70971cbfa24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"ebeec1c3-3cf5-472b-a47f-e70971cbfa24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Pelicula",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYWJsb21hdDkxQGdtYWlsLmNvbSIsImV4cCI6MTY0Mzg4MzM3NCwiaWF0IjoxNjQzODQ3Mzc0fQ.MYYcj77-1WwBAzanSMytiDbXdNo4OhIa6C6SMdhwfsk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movies/c92fcc8b-e9f5-4dc6-8fbc-ff0d6701a2bb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"c92fcc8b-e9f5-4dc6-8fbc-ff0d6701a2bb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Personaje",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/characters/5a07295f-2680-4a18-bcda-3cdff0d0e5e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"5a07295f-2680-4a18-bcda-3cdff0d0e5e5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
