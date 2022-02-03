@@ -2,6 +2,7 @@ package com.alkemy.desafioDisney.Servicio.impl;
 
 import com.alkemy.desafioDisney.Dto.GeneroDTO;
 import com.alkemy.desafioDisney.Entidad.Genero;
+import com.alkemy.desafioDisney.Enum.Errors;
 import com.alkemy.desafioDisney.Exception.ParamNotFound;
 import com.alkemy.desafioDisney.Mapper.GeneroMapper;
 import com.alkemy.desafioDisney.Repositorio.GeneroRepositorio;
@@ -38,7 +39,8 @@ public class GeneroServicioImpl implements GeneroServicio {
     public Genero buscarPorId(String id) throws ParamNotFound {
         Optional<Genero> busqueda = generoRepositorio.findById(id);
         if (!busqueda.isPresent()){
-            throw new ParamNotFound("Genero con id: " + id + " no fue encontrado");
+            Errors errors = Errors.GENERO_NOT_FOUND;
+            throw new ParamNotFound(errors.getMessege());
         }
         return busqueda.get();
     }

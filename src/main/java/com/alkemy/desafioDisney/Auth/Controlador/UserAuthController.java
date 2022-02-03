@@ -38,13 +38,13 @@ public class UserAuthController {
         this.jwtTokenUtil = jwtTokenUtil;
     }
 
-    @PostMapping("/singup")
+    @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> singUp(@Valid @RequestBody UserDTO user) throws Exception{
         this.userDetailsService.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PostMapping("/singin")
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> singIn(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
 
         UserDetails userDetails;

@@ -12,5 +12,5 @@ public class PelioSerieDTO implements Serializable {
     String fechaCreacion;
     Integer calificacion;
     List<PersonajeDTO> personajes;
-    GeneroDTO generoDTO;
+    String generoId;
 }

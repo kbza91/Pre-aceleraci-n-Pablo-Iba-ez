@@ -14,7 +14,7 @@ public interface PersonajeServicio {
 
     List<PersonajeBaseDTO> buscarTodos();
 
-    void borrar (String id);
+    void borrar (String id) throws ParamNotFound;
 
     PersonajeDTO modificarPersonaje(String id, PersonajeDTO dto) throws ParamNotFound, ParseException;
 

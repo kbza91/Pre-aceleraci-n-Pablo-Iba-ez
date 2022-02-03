@@ -4,8 +4,8 @@ import com.alkemy.desafioDisney.Dto.PersonajeBaseDTO;
 import com.alkemy.desafioDisney.Dto.PersonajeDTO;
 import com.alkemy.desafioDisney.Dto.PersonajeFiltroDTO;
 import com.alkemy.desafioDisney.Entidad.Personaje;
+import com.alkemy.desafioDisney.Enum.Errors;
 import com.alkemy.desafioDisney.Exception.ParamNotFound;
-import com.alkemy.desafioDisney.Mapper.PeliculaMapper;
 import com.alkemy.desafioDisney.Mapper.PersonajeMapper;
 import com.alkemy.desafioDisney.Repositorio.PersonajeRepositorio;
 import com.alkemy.desafioDisney.Repositorio.Specification.PersonajeSpecification;
@@ -25,8 +25,6 @@ public class PersonajeServicioImpl implements PersonajeServicio {
     @Autowired
     private PersonajeRepositorio personajeRepositorio;
     @Autowired
-    private PeliculaMapper peliculaMapper;
-    @Autowired
     private PersonajeSpecification personajeSpecification;
 
     public PersonajeDTO guardarPersonaje(PersonajeDTO dto) throws ParseException {
@@ -40,8 +38,11 @@ public class PersonajeServicioImpl implements PersonajeServicio {
         return personajeMapper.listaPersonajeEntidad2DTObase(buscarTodosPersonajes);
     }
 
-    public void borrar(String id) {
-        personajeRepositorio.deleteById(id);
+    public void borrar(String id) throws ParamNotFound{
+        Personaje personaje = this.buscarPorId(id);
+        if (personaje != null ) {
+            personajeRepositorio.deleteById(id);
+        }
     }
 
     public PersonajeDTO modificarPersonaje(String id, PersonajeDTO dto) throws ParamNotFound, ParseException {
@@ -52,7 +53,6 @@ public class PersonajeServicioImpl implements PersonajeServicio {
         personaje.setHistoria(dto.getHistoria());
         personaje.setPeso(dto.getPeso());
         personaje.setEdad(dto.getEdad());
-        personaje.setPelioSeries(peliculaMapper.peliDTOList2EntidadList(dto.getPeliculas(), false));
 
         Personaje personajeEditado = personajeRepositorio.save(personaje);
 
@@ -62,7 +62,7 @@ public class PersonajeServicioImpl implements PersonajeServicio {
     public Personaje buscarPorId(String id) throws ParamNotFound {
         Optional<Personaje> personaje = personajeRepositorio.findById(id);
         if (!personaje.isPresent()){
-            throw new ParamNotFound("Personaje con id: " + id + " no fue encontrado");
+            throw new ParamNotFound(Errors.PERSONAJE_NOT_FOUND.getMessege());
         }
         return personaje.get();
     }

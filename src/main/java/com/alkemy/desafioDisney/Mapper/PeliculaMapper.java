@@ -5,13 +5,12 @@ import com.alkemy.desafioDisney.Dto.PelioSerieDTO;
 import com.alkemy.desafioDisney.Dto.PersonajeDTO;
 import com.alkemy.desafioDisney.Entidad.PelioSerie;
 import com.alkemy.desafioDisney.Entidad.Personaje;
+import com.alkemy.desafioDisney.Utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -19,8 +18,6 @@ public class PeliculaMapper {
 
     @Autowired
     private PersonajeMapper personajeMapper;
-    @Autowired
-    private GeneroMapper generoMapper;
 
     public PelioSerie peliDTO2Entidad (PelioSerieDTO dto, boolean cargarPersonajes) throws ParseException {
 
@@ -28,10 +25,8 @@ public class PeliculaMapper {
         pelioSerie.setTitulo(dto.getTitulo());
         pelioSerie.setCalificacion(dto.getCalificacion());
         pelioSerie.setImagen(dto.getImagen());
-
-        SimpleDateFormat fechaFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date fetch = fechaFormat.parse(dto.getFechaCreacion());
-        pelioSerie.setFechaCreacion(fetch);
+        pelioSerie.setFechaCreacion(Utils.stringToDate(dto.getFechaCreacion()));
+        pelioSerie.setGeneroId(dto.getGeneroId());
 
         if (cargarPersonajes){
             List<Personaje> personajes = new ArrayList<>();
@@ -50,11 +45,9 @@ public class PeliculaMapper {
         dto.setTitulo(entidad.getTitulo());
         dto.setCalificacion(entidad.getCalificacion());
         dto.setImagen(entidad.getImagen());
-        //dto.setGeneroDTO(generoMapper.generoEntidad2DTO(entidad.getGenero()));
+        dto.setGeneroId(entidad.getGeneroId());
 
-        SimpleDateFormat fechaFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String fetch = fechaFormat.format(entidad.getFechaCreacion());
-        dto.setFechaCreacion(fetch);
+        dto.setFechaCreacion(Utils.dateToString(entidad.getFechaCreacion()));
 
         if (cargarPersonajes){
             List<PersonajeDTO> personajesDTO = new ArrayList<>();
@@ -90,10 +83,7 @@ public class PeliculaMapper {
         dto.setId(entidad.getId());
         dto.setTitulo(entidad.getTitulo());
         dto.setImagen(entidad.getImagen());
-
-        SimpleDateFormat fechaFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String fetch = fechaFormat.format(entidad.getFechaCreacion());
-        dto.setFechaCreacion(fetch);
+        dto.setFechaCreacion(Utils.dateToString(entidad.getFechaCreacion()));
 
         return dto;
     }

@@ -32,7 +32,7 @@ public class PersonajeControlador {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> borrar (@PathVariable String id){
+    public ResponseEntity<Void> borrar (@PathVariable String id) throws ParamNotFound {
         personajeServicio.borrar(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

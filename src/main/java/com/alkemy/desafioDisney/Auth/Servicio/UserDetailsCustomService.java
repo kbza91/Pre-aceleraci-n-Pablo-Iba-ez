@@ -3,6 +3,7 @@ package com.alkemy.desafioDisney.Auth.Servicio;
 import com.alkemy.desafioDisney.Auth.DTO.UserDTO;
 import com.alkemy.desafioDisney.Auth.Entidad.UserEntity;
 import com.alkemy.desafioDisney.Auth.Repositorio.UserRepository;
+import com.alkemy.desafioDisney.Enum.Errors;
 import com.alkemy.desafioDisney.Servicio.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -25,7 +26,7 @@ public class UserDetailsCustomService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException{
         UserEntity userEntity = userRepository.findByUsername(userName);
         if (userEntity == null){
-            throw new UsernameNotFoundException("Usuario o contraseña no encontrado");
+            throw new UsernameNotFoundException(Errors.USER_NOT_FOUND.getMessege());
         }
         return new User(userEntity.getUsername(), userEntity.getPassword(), Collections.emptyList());
     }

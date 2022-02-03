@@ -37,14 +37,14 @@ public class PeliculaControlador {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> borrarPelicula (@PathVariable String id){
+    public ResponseEntity<Void> borrarPelicula (@PathVariable String id) throws ParamNotFound {
         peliculaServicio.borrar(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<PelioSerieDTO> modificar(@PathVariable String id, @RequestBody PelioSerieDTO dtoNuevo) throws ParseException, ParamNotFound {
-        PelioSerieDTO peliculaEditada = peliculaServicio.modificarPelicula(id, dtoNuevo, true);
+        PelioSerieDTO peliculaEditada = peliculaServicio.modificarPelicula(id, dtoNuevo, false);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(peliculaEditada);
     }
 

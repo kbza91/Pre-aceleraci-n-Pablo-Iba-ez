@@ -14,7 +14,7 @@ public interface PeliculaServicio {
 
     PelioSerieDTO guardarPelicula (PelioSerieDTO dto) throws ParseException;
 
-    void borrar (String id);
+    void borrar (String id) throws ParamNotFound;
 
     PelioSerieDTO modificarPelicula(String id, PelioSerieDTO dtoNuevo, boolean b) throws ParseException, ParamNotFound;
 

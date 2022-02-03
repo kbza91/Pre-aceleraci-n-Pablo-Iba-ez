@@ -24,6 +24,7 @@ public class PersonajeMapper {
         personaje.setImagen(dto.getImagen());
         personaje.setPeso(dto.getPeso());
         personaje.setNombre(dto.getNombre());
+
         return personaje;
     }
 
@@ -46,13 +47,6 @@ public class PersonajeMapper {
         }
 
         return dto;
-    }
-
-    public Personaje personajeBaseDTO2Entidad (PersonajeBaseDTO dto){
-        Personaje personaje = new Personaje();
-        personaje.setImagen(dto.getImagen());
-        personaje.setNombre(dto.getNombre());
-        return personaje;
     }
 
     public PersonajeBaseDTO personajeEntidad2DTObase (Personaje personaje){

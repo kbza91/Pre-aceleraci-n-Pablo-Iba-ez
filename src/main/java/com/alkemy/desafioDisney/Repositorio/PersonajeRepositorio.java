@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface PersonajeRepositorio extends JpaRepository<Personaje, String>, JpaSpecificationExecutor<Personaje> {
         List<Personaje> findAll(Specification<Personaje> spec);
+
 }
